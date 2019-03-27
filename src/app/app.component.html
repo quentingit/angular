@@ -9,29 +9,49 @@
 
 </div>
 
+<div style="margin:0 auto;width:600px;">
+<div style="margin-left:-71px;background-image: url('../assets/screen.png');width:748px;height:650px;position:absolute;z-index:-10;"></div>
+<div style="margin:0 auto;margin-top:70px;width:600px;height:420px;border:5px solid black;position:absolute;">
+  <div style="background-image: url('../assets/bg-arena1.jpg'); height: 320px;">
 
-<div style="margin:0 auto;width:600px;height:400px;">
-  <div style="background-image: url('../assets/bg-arena1.jpg')">
 
+        <div style=" margin-left:200px;padding-top:50px;">
 
-        <div style="width: 200px; margin-left:400px;">
-          <div id="poke2img" ></div>
-          <div id="poke2" style="background-color:#3498db; color:white; border-radius:10px; text-align:center;">
-            PV pokemon 2
-          </div>
-        </div>
+          <div id="poke2img" style="float:right;margin-right:50px;"  ></div>
+          <div style="font-size:14px; border:2px solid #333; width: 200px; border-radius:20px;height: 65px; background-color:white;">
 
-        <div style="width: 400px;">
-
-          <div style="margin-top:100px; border:2px solid #333; float:right;width: 200px; border-radius:20px;height: 50px; background-color:white;">
-            <div id="barrepoke1" style="height:10px;width: 150px;float:right;background-color:#3498db; color:white; border-radius:10px; text-align:center;">
+            <div id="nompoke2" style="margin:5px 0px;width: 100%;float:left;color:#333; border-radius:10px; text-align:center;">
+              nomPoke1
             </div>
-            <div id="poke1" style="width: 150px;float:right;color:#333; border-radius:10px; text-align:center;">
+            <div id="barrepoke2" style="width: 150px; float:left;margin-left:20px; height:10px; border:1px solid black;border-radius:10px; ">
+              <div    style="height:7px;width: 150px;float:left;background-color:#3498db; color:white; border-radius:10px; text-align:center;">
+              </div>
+            </div>
+            <div id="poke2" style="margin:5px 0px;width: 100%;float:right;color:#333; border-radius:10px; text-align:center;">
               PV pokemon 1
             </div>
           </div>
 
 
+        </div>
+
+
+
+        <div style="margin-left:40px;margin-top:40px;position:absolute;">
+
+          <div style="margin-top:70px; font-size:14px; border:2px solid #333; float:right;width: 200px; border-radius:20px;height: 65px; background-color:white;">
+
+            <div id="nompoke1" style="margin:5px 0px;width: 100%;float:right;color:#333; border-radius:10px; text-align:center;">
+              nomPoke1
+            </div>
+            <div id="barrepoke1" style="width: 150px; float:left;margin-left:20px; height:10px; border:1px solid black;border-radius:10px; ">
+                <div    style="height:7px;width: 150px;float:left;background-color:#3498db; color:white; border-radius:10px; text-align:center;">
+                </div>
+            </div>
+            <div id="poke1" style="margin:5px 0px;width: 100%;float:right;color:#333; border-radius:10px; text-align:center;">
+              PV pokemon 1
+            </div>
+          </div>
 
           <div id="poke1img" style="float:left; "></div>
 
@@ -39,15 +59,21 @@
 
         <div class="clearfix"></div>
       </div>
-      <div style="width:100%;">
+      <div style="width:100%;height: 100px;">
 
         <div  style=" background-color:#333; height:100px;color:#333; padding:5px;b">
-          <div id="etat" style=" width:590px;border-radius:5px;background-color:#fff; height:90px;padding:5px;color:#333;">ETAT
+          <div id="etat" style=" width:580px;border-radius:5px;background-color:#fff; height:90px;padding:5px;color:#333;">ETAT
           </div>
+
         </div>
       </div>
 
+  <div>
+    <app-click-me id="buttonplaypause" (click)="onSave($event)" ></app-click-me>
+  </div>
 
+
+</div>
 </div>
 
 
