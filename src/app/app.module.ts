@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ClickMeComponent } from './click-me/click-me.component';
+import { ClickMeComponent } from './click/click-me.component';
+import {PokemonService} from "./pokemon.service";
 
 @NgModule({
   declarations: [
@@ -14,7 +15,7 @@ import { ClickMeComponent } from './click-me/click-me.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [PokemonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

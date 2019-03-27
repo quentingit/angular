@@ -1,80 +1,92 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <br/><br/>
-  <h1>
-    <img width="200px;" src="../assets/poke-logo.png"/>
-  </h1>
-  <br/><br/>
-
-
+<div class="center">
+  <br/><br/><h1><img width="200px;" src="../assets/poke-logo.png"/></h1><br/><br/>
 </div>
 
-<div style="margin:0 auto;width:600px;">
-<div style="margin-left:-71px;background-image: url('../assets/screen.png');width:748px;height:650px;position:absolute;z-index:-10;"></div>
-<div style="margin:0 auto;margin-top:70px;width:600px;height:420px;border:5px solid black;position:absolute;">
-  <div style="background-image: url('../assets/bg-arena1.jpg'); height: 320px;">
 
 
+
+<div class="ecran">
+  <div class="GBA"></div>
+  <div class="ecranZone">
+
+
+      <div class="ecranArene">
+        <!-------------------------------->
+        <!--POKEMON 2 - POKEMON ADVERSE -->
         <div style=" margin-left:200px;padding-top:50px;">
-
-          <div id="poke2img" style="float:right;margin-right:50px;"  ></div>
-          <div style="font-size:14px; border:2px solid #333; width: 200px; border-radius:20px;height: 65px; background-color:white;">
-
-            <div id="nompoke2" style="margin:5px 0px;width: 100%;float:left;color:#333; border-radius:10px; text-align:center;">
-              nomPoke1
-            </div>
-            <div id="barrepoke2" style="width: 150px; float:left;margin-left:20px; height:10px; border:1px solid black;border-radius:10px; ">
-              <div    style="height:7px;width: 150px;float:left;background-color:#3498db; color:white; border-radius:10px; text-align:center;">
-              </div>
-            </div>
-            <div id="poke2" style="margin:5px 0px;width: 100%;float:right;color:#333; border-radius:10px; text-align:center;">
-              PV pokemon 1
-            </div>
+          <div id="poke2img" style="float:right;margin-right:50px;"  src="'" >
+            <img *ngIf="Poke2.pvperdu >0"  src="{{Poke2.url}}" width="120" class="rounded mx-auto d-block"/>
+            <img *ngIf="Poke2.pvperdu <=0"  src="{{Poke2.url}}" width="120" class="blur rounded mx-auto d-block"/>
           </div>
+          <div class="barre barretop">
+            <div id="nompoke2" style="margin:5px 0px;width: 100%;float:left;color:#333; border-radius:10px; text-align:center;">
+              {{Poke2.name}}
+            </div>
+            <div id="barrepoke2" style="float:left;margin-left:20px; width: 150px;  height:10px; border:1px solid black;border-radius:10px; ">
+              <div *ngIf="Poke2.pvperdu >0" [ngStyle]="{'width.px':(Poke2.pvperdu/Poke2.pv)*150}"  class="barreclassique"></div>
+              <div *ngIf="Poke2.pvperdu <=0" [ngStyle]="{'width.px':(Poke2.pvperdu/Poke2.pv)*150}"  class="barevide"></div>
 
-
+            </div>
+            <div *ngIf="Poke2.pvperdu >0" class="pv">{{Poke2.pvperdu}}/{{Poke2.pv}}</div>
+            <div *ngIf="Poke2.pvperdu <=0"  class="pv">0/{{Poke2.pv}}</div>
+          </div>
         </div>
 
 
-
-        <div style="margin-left:40px;margin-top:40px;position:absolute;">
-
-          <div style="margin-top:70px; font-size:14px; border:2px solid #333; float:right;width: 200px; border-radius:20px;height: 65px; background-color:white;">
-
+         <!------------------------------>
+         <!--POKEMON 1 - NOTRE POKEMON -->
+        <div style="margin-left:40px;margin-top:100px;position:absolute;">
+          <div class="barre">
             <div id="nompoke1" style="margin:5px 0px;width: 100%;float:right;color:#333; border-radius:10px; text-align:center;">
-              nomPoke1
+              {{Poke1.name}}
             </div>
             <div id="barrepoke1" style="width: 150px; float:left;margin-left:20px; height:10px; border:1px solid black;border-radius:10px; ">
-                <div    style="height:7px;width: 150px;float:left;background-color:#3498db; color:white; border-radius:10px; text-align:center;">
-                </div>
+                <div   *ngIf="Poke1.pvperdu >0"  [ngStyle]="{'width.px':(Poke1.pvperdu/Poke1.pv)*150}" class="barreclassique"></div>
+                <div   *ngIf="Poke1.pvperdu <=0"  [ngStyle]="{'width.px':(Poke1.pvperdu/Poke1.pv)*150}" class="barrevide"></div>
+
             </div>
-            <div id="poke1" style="margin:5px 0px;width: 100%;float:right;color:#333; border-radius:10px; text-align:center;">
-              PV pokemon 1
-            </div>
+            <div *ngIf="Poke1.pvperdu >0"   class="pv">{{Poke1.pvperdu}}/{{Poke1.pv}} </div>
+            <div *ngIf="Poke1.pvperdu <=0"  class="pv"> 0/{{Poke1.pv}} </div>
           </div>
 
-          <div id="poke1img" style="float:left; "></div>
-
+          <div id="poke1img" style="float:left; ">
+            <img *ngIf="Poke1.pvperdu >0"  src="{{Poke1.url}}" width="150" class="rounded mx-auto d-block"/>
+            <img *ngIf="Poke1.pvperdu <=0"  src="{{Poke1.url}}" width="150" class="blur rounded mx-auto d-block"/>
+          </div>
         </div>
 
-        <div class="clearfix"></div>
       </div>
+
+
+      <!------------------------------------->
+      <!-- ECRAN DE LOGS ET D'INFORMATIONS -->
       <div style="width:100%;height: 100px;">
 
-        <div  style=" background-color:#333; height:100px;color:#333; padding:5px;b">
-          <div id="etat" style=" width:580px;border-radius:5px;background-color:#fff; height:90px;padding:5px;color:#333;">ETAT
-          </div>
+        <div  style=" background-color:#333; height:100px;color:#333; padding:5px;">
+
+          <!-- on affiche que ler dernier log -->
+          <div *ngFor="let item of tablog;let last = last;let first = first;let index = index" id="etat" >
+
+              <div style=" width:580px;border-radius:5px;background-color:#fff; height:90px;padding:5px;color:#333;" *ngIf="last ==true"> {{item}}</div>
+
+            </div>
+
 
         </div>
       </div>
 
-  <div>
-    <app-click-me id="buttonplaypause" (click)="onSave($event)" ></app-click-me>
+
+      <!----------------------->
+      <!-- BOUTON PLAY/PAUSE -->
+      <div>
+        <app-click-me
+          *ngIf="show" id="buttonplaypause" (click)="onSave($event)"
+          [playpausebutton]="playpause"
+        ></app-click-me>
+
+      </div>
   </div>
-
-
 </div>
-</div>
-
 
 <router-outlet></router-outlet>
