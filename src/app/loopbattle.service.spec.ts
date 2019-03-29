@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { LogService } from './log.service';
+import { LoopbattleService } from './loopbattle.service';
 
-describe('LogService', () => {
+describe('LoopbattleService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: LogService = TestBed.get(LogService);
+    const service: LoopbattleService = TestBed.get(LoopbattleService);
     expect(service).toBeTruthy();
   });
 });

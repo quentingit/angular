@@ -9,7 +9,7 @@ import {Directive} from "@angular/compiler/src/core";
   styleUrls: ['./click-me.component.css'],
   template: `
 
-    <button style="padding:10px; margin-top: 20px; border:none; width:100px; background-color:#333;color:#fff; "
+    <button class="buttonPlaypause"
             (click)="onClickMe()">{{playpausebutton}}</button>
     `
 })

@@ -1,29 +1,9 @@
 import { Component } from '@angular/core';
 import { PokemonService } from './pokemon.service';
+import {LoopbattleService} from "./loopbattle.service";
 
 
 
-//LA CLASSE POKEMON
-class Pokemon {
-  constructor(public name: string,
-              public pv: number,
-              public pvperdu : number,
-              public attaque: number,
-              public attaqueSpe: number,
-              public defense : number,
-              public defenseSpe: number,
-              public vitesse: number,
-              public url: string) {
-    this.name = name;
-    this.pv = pv;
-    this.attaque =attaque;
-    this.attaqueSpe= attaqueSpe;
-    this.defense= defense;
-    this.defenseSpe= defenseSpe;
-    this.vitesse =vitesse;
-    this.url =url;
-  }
-}
 
 
 @Component({
@@ -33,48 +13,61 @@ class Pokemon {
 })
 
 
-
 export class AppComponent {
-  //affichage du bouton play/pause
-  show: boolean = true;
 
-  //ON CREE NOS DEUX POKEMON
-  Poke1 = new Pokemon("Pikachu", 35, 35, 55, 50, 40, 50, 90 , "https://www.pokebip.com/pokedex-images/artworks/25.png");
-  Poke2 = new Pokemon("Bulbizarre", 45, 45, 49, 65, 49, 65, 49,  "https://www.pokebip.com/pokedex-images/artworks/1.png");
+  //Pour le rendu html après chargement des données des pokemons
+  isAvailable:boolean=false;
 
-  //on creer un fichier de log
-
+  //on creer un fichier de log pour les informations de combats
   tablog:string[]= ["Le combat commence !"];
 
-
-  isValid = true;
+  //affichage du bouton play/pause
+  show: boolean = true;
 
   //Boleen pour play/pause
   boolplaypause =true;
   playpause= "stop";
 
-  //a voir pour les degats
+  //a voir pour animation de degats
   poke1damage=false;
   poke2damage=false;
-  constructor(private pokemonService: PokemonService){
+
+  //date de debut combat
+  dateNow= Date.now();
+
+  //pour utiliser le service Pokemon service
+  constructor(public pokemonService: PokemonService,public loopbattleService: LoopbattleService, ){
   }
 
+  //POur initialiser
   ngOnInit(){
-    //COMBAT COMMENCE
-    this.pokemonService.Battle(this.Poke1, this.Poke2,  this.pokemonService.Priority(this.Poke1, this.Poke2), this.tablog);
+    this.pokemonService.getPokemons().subscribe(
+      res => {
+        this.isAvailable=true;
+        this.loopbattleService.Battle(this.pokemonService.Poke1, this.pokemonService.Poke2,  this.pokemonService.Priority(this.pokemonService.Poke1, this.pokemonService.Poke2), this.tablog)
+          .subscribe(
+
+          );
+      },
+      err => {}
+      );
   }
 
-  onSave($event){
 
+  //Fonction pour le bouton Play/Pause
+  onSave(){
+
+    console.log("ca vaut:"+ this.isAvailable);
     if(this.boolplaypause){
-      this.tablog.push("la partie est stoppé !");
-      console.log("Save button is clicked!", $event);
+
+      this.tablog.push("la partie est stoppée !");
+      console.log("Save button is clicked!");
       clearInterval(this.pokemonService.refreshIntervalId);
       this.boolplaypause=false;
         this.playpause="start";
     }else{
       this.tablog.push("la partie reprend !");
-      this.pokemonService.Battle(this.Poke1, this.Poke2, null, this.tablog);
+        this.loopbattleService.Battle(this.pokemonService.Poke1, this.pokemonService.Poke2, null, this.tablog);
         this.boolplaypause=true;
         this.playpause="stop";
     }
